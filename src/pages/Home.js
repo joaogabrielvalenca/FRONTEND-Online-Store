@@ -5,7 +5,10 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <ProductList />
+        <div>
+          <ProductList />
+        </div>
+
       </div>
     );
   }
