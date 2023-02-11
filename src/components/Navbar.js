@@ -7,11 +7,13 @@ class NavBar extends Component {
     return (
       <div className="container-nav">
         <div className="nav-input">
-          pesquiar
+          Pesquisa
         </div>
+
         <div className="nav-logo">
           logo
         </div>
+
         <div className="nav-cart-icon">
           <Link to="/ShoppingCart" data-testid="shopping-cart-button">Carrinho</Link>
         </div>

@@ -1,0 +1,16 @@
+* {
+  font-family: ' Epilogue' , Verdana , Geneva , Tahoma , sans-serif;
+  font-style: normal;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-list button {
+  border: none;
+  cursor: pointer;
+  margin-bottom: 5px;
+  text-align: left;
+}
