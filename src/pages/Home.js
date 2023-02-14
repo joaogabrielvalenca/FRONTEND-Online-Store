@@ -25,7 +25,7 @@ class Home extends Component {
       <div className="container-home">
         <div className="container-nav">
           <NavBar
-            searchInputReturn={ searchInputReturn } // Envia props
+            searchInputReturn={ searchInputReturn }
             handleChange={ handleChange }
             submitButtonClick={ submitButtonClick }
           />
