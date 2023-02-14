@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import '../styles/navbar.css';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import FormSearch from './SearchForm';
+import '../styles/navbar.css';
 
 class NavBar extends Component {
   render() {
+    const { searchInputReturn, handleChange, submitButtonClick } = this.props;
+
     return (
       <div className="container-nav">
         <div className="nav-input">
-          Pesquisa
+          <FormSearch
+            searchInputReturn={ searchInputReturn } // Envia props
+            handleChange={ handleChange }
+            submitButtonClick={ submitButtonClick }
+          />
         </div>
 
         <div className="nav-logo">
@@ -21,5 +29,11 @@ class NavBar extends Component {
     );
   }
 }
+
+NavBar.propTypes = {
+  searchInputReturn: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  submitButtonClick: PropTypes.func.isRequired,
+};
 
 export default NavBar;

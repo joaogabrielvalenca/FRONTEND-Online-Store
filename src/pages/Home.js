@@ -1,52 +1,68 @@
 import React, { Component } from 'react';
-import ProductList from '../components/ProductList';
+import PropTypes from 'prop-types';
 import '../styles/home.css';
 import NavBar from '../components/Navbar';
 import CategoryList from '../components/CategoryList';
-import { getCategories } from '../services/api';
+import ProductList from '../components/ProductList';
 
 class Home extends Component {
-  state = {
-    categoryListReturn: [],
-  };
-
   componentDidMount() {
-    this.fetchGetCategories();
+    const { fetchGetCategories } = this.props;
+    fetchGetCategories();
   }
 
-  // handleChange = ({ target: { name, value } }) => {
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // };
-
-  fetchGetCategories = async () => {
-    const categoryListReturn = await getCategories();
-
-    this.setState({
-      categoryListReturn,
-    });
-  };
-
   render() {
-    const { categoryListReturn } = this.state;
+    const {
+      searchInputReturn,
+      handleChange,
+      submitButtonClick,
+      categoryList,
+      productList,
+      subCategoryList,
+    } = this.props;
 
     return (
       <div className="container-home">
         <div className="container-nav">
-          <NavBar />
+          <NavBar
+            searchInputReturn={ searchInputReturn } // Envia props
+            handleChange={ handleChange }
+            submitButtonClick={ submitButtonClick }
+          />
         </div>
         <div className="container-content">
           <div className="content-left">
-            <CategoryList fetchGetCategories={ categoryListReturn } />
+            <CategoryList
+              fetchGetCategories={ categoryList }
+              subCategoryList={ subCategoryList }
+            />
           </div>
           <div className="content-right">
-            <ProductList />
+            <div>
+              <ProductList
+                productOrCategoryFound={ productList }
+              />
+            </div>
           </div>
         </div>
       </div>
     );
   }
 }
+
+Home.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+  searchInputReturn: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  submitButtonClick: PropTypes.func.isRequired,
+  fetchGetCategories: PropTypes.func.isRequired,
+  categoryList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  productList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  subCategoryList: PropTypes.func.isRequired,
+};
 
 export default Home;

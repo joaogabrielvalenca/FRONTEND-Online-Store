@@ -1,15 +1,9 @@
-* {
-  font-family: ' Epilogue' , Verdana , Geneva , Tahoma , sans-serif;
-  font-style: normal;
-  margin: 0;
-}
-
 .container-nav {
   align-items: center;
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  height: 106px;
+  height: 15%;
   justify-content: space-between;
   width: 100%;
 }
