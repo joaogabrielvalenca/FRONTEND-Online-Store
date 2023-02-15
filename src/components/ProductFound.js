@@ -22,9 +22,14 @@ class ProductFound extends Component {
               {title}
             </div>
             <div className="product-price">
-              R$
+              <p>
+                R$
+              </p>
               {' '}
               {price}
+            </div>
+            <div className="product-price">
+              <button> Adicionar ao carrinho </button>
             </div>
           </div>
         </div>

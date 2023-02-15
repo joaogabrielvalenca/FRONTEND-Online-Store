@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import FormSearch from './SearchForm';
 import '../styles/navbar.css';
+import LogoStore from '../images/logo_store.png';
+import CartIcon from '../images/cart_icon.png';
 
 class NavBar extends Component {
   render() {
@@ -10,7 +12,7 @@ class NavBar extends Component {
 
     return (
       <div className="container-nav">
-        <div className="nav-input">
+        <div>
           <FormSearch
             searchInputReturn={ searchInputReturn } // Envia props
             handleChange={ handleChange }
@@ -19,11 +21,16 @@ class NavBar extends Component {
         </div>
 
         <div className="nav-logo">
-          logo
+          <img src={ LogoStore } alt="Online Store" />
         </div>
 
         <div className="nav-cart-icon">
-          <Link to="/ShoppingCart" data-testid="shopping-cart-button">Carrinho</Link>
+          <Link to="/ShoppingCart" data-testid="shopping-cart-button">
+            <div>
+              <p>99</p>
+            </div>
+            <img src={ CartIcon } alt="Carrinho" />
+          </Link>
         </div>
       </div>
     );

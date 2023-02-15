@@ -1,7 +1,8 @@
 .container-product {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 35px;
   grid-template-columns: auto auto auto auto;
+  margin: 35px;
 }
 
 .product {
@@ -12,13 +13,14 @@
 
 .product-card {
   align-items: center;
-  border: 1px solid grey;
+  background-color: white;
+  box-shadow: 2.76px 2.76px 5.52px #0000000d;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  height: 275px;
+  height: 360px;
   padding: 10px;
-  width: 250px;
+  width: 280px;
 }
 
 .product-img {
@@ -27,7 +29,7 @@
 }
 
 .product-img img {
-  height: 150px;
+  height: 210px;
   padding: 5px;
 }
 
@@ -39,7 +41,39 @@
   padding: 5px;
 }
 
+.product-price p {
+  color: hsl(224, 7%, 71%);
+  font-size: 16px;
+}
+
+.product-price button {
+  background: hsl(158, 60%, 48%);
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  height: 39px;
+  width: 245px;
+}
+
+.product-price button:hover {
+  background: hsl(225, 100%, 45%);
+  border: none;
+  box-shadow: 2.76px 2.76px 5.52px #0000000d;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  height: 39px;
+  width: 245px;
+}
+
 .product-title {
   display: flex;
+  font-weight: 600;
+  max-width: 200px;
+  overflow: hidden;
   padding: 5px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
