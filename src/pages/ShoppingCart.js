@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NavBar from './Navbar';
+import NavBar from '../components/Navbar';
 
 class ShoppingCart extends Component {
   render() {

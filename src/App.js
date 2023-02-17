@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import ProductDetail from './pages/ProductDetail';
+import ShoppingCart from './pages/ShoppingCart';
 import Home from './pages/Home';
-import ShoppingCart from './components/ShoppingCart';
-import { getCategories, getProductsFromCategoryAndQuery } from './services/api';
+import {
+  getCategories,
+  getProductsFromCategoryAndQuery,
+} from './services/api';
 
 class App extends Component {
   state = {
@@ -54,7 +58,7 @@ class App extends Component {
     const { searchInputReturn, categoryList, productList } = this.state;
 
     return (
-      <BrowserRouter>
+      <Switch>
         <Route
           exact
           path="/"
@@ -70,8 +74,9 @@ class App extends Component {
             { ...props }
           />) }
         />
-        <Route path="/ShoppingCart" component={ ShoppingCart } />
-      </BrowserRouter>
+        <Route path="/shoppingcart" component={ ShoppingCart } />
+        <Route path="/productdetail/:id" component={ ProductDetail } />
+      </Switch>
     );
   }
 }
