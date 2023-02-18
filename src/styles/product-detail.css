@@ -1,42 +1,86 @@
 .container-detail {
-  align-items: center;
   display: flex;
-  flex-direction: column;
-  margin: 35px;
-  padding: 10px;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.product-detail {
-  align-items: center;
-  background-color: white;
-  box-shadow: 2.76px 2.76px 5.52px #0000000d;
+.back {
+  display: flex;
+  height: 100%;
+}
+
+.back img {
+  margin: 35px;
+  margin-bottom: 0;
+}
+
+.detail-page-left {
+  background-color: hsl(0, 0%, 93%);
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  height: 100%;
 }
 
-.product-detail-img {
+.page-name-image {
+  align-items: center;
+  background-color: white;
+  box-shadow: 0.01px 4px 15px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
   display: flex;
-  padding: 5px;
+  flex-direction: column;
+  height: 516px;
+  justify-content: space-evenly;
+  margin: 35px;
+  width: 488px;
 }
 
-.product-detail-img img {
+.page-name-image img {
+  cursor: pointer;
+  display: flex;
+  height: 365px;
+  top: 280px;
+}
+
+.product-detail-title {
+  display: flex;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 35px;
+  margin-top: 35px;
+  text-align: center;
+}
+
+.detail-page-right {
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
   height: 500px;
-  padding: 5px;
+  width: 100%;
+}
+
+.detail-page-right h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 35px;
+  margin-top: 35px;
+}
+
+.detail-page-right li {
+  color: hsl(220, 4%, 60%);
+  font-size: 16px;
+  font-weight: 400;
+  margin: 35px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .product-detail-price {
-  align-items: flex-end;
-  display: flex;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 5px;
-}
-
-.product-detail-price p {
-  color: hsl(224, 7%, 71%);
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 17.5px;
 }
 
 .product-detail-price button {
@@ -60,15 +104,4 @@
   height: 39px;
   transform: translateY(-5px);
   width: 245px;
-}
-
-.product-detail-title {
-  display: flex;
-  font-weight: 600;
-  max-width: 200px;
-  overflow: hidden;
-  padding: 5px;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }

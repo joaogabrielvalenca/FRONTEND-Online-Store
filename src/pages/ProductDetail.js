@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import NavBar from '../components/Navbar';
 import { getProductById } from '../services/api';
 import '../styles/product-detail.css';
+import BackIcon from '../images/back_icon.png';
 
 class ProductDetail extends Component {
   state = {
@@ -40,36 +41,68 @@ class ProductDetail extends Component {
           <NavBar />
         </div>
         <div
-          data-testid="product-detail-link"
-          className="container-detail"
+          data-testid="product"
+          className="container-detail "
         >
-          <div
-            data-testid="product"
-            className="product-detail"
-          >
-            <img
-              data-testid="product-detail-image"
-              src={ thumbnail }
-              alt={ title }
-              className="product-detail-img"
-            />
-            <div className="product">
+          <div className="detail-page-left">
+
+            <Link
+              to="/"
+              alt="Voltar"
+              className="back"
+            >
+              <img
+                src={ BackIcon }
+                alt="Voltar"
+              />
+            </Link>
+
+            <div
+              data-testid="product-detail-link"
+              className="page-name-image"
+            >
               <div
                 data-testid="product-detail-name"
                 className="product-detail-title"
               >
                 {title}
               </div>
-              <p> R$ </p>
-              <div
-                data-testid="product-detail-price"
-                className="product-detail-price"
-              >
-                {' '}
-                {price}
-              </div>
+              <img
+                data-testid="product-detail-image"
+                src={ thumbnail }
+                alt={ title }
+                className="product-detail-img"
+              />
             </div>
+          </div>
 
+          <div className="detail-page-right">
+            <div className="page-pecs-price-button">
+              <h2
+                data-testid="product-detail-name"
+              >
+                {title}
+
+              </h2>
+              <h2>Descrição</h2>
+              <li>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime atum.
+              </li>
+              <li>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime atum.
+              </li>
+              <li>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime atum.
+              </li>
+            </div>
+            <div
+              data-testid="product-detail-price"
+              className="product-detail-price"
+            >
+              R$
+              {' '}
+              {price}
+            </div>
             <div className="product-detail-price">
               <button
                 data-testid="shopping-cart-button"
@@ -80,7 +113,6 @@ class ProductDetail extends Component {
             </div>
           </div>
         </div>
-        <Link to="/" alt="Voltar">Voltar</Link>
       </div>
     );
   }
