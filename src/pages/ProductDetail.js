@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { array } from 'prop-types';
 import { Link } from 'react-router-dom';
 import NavBar from '../components/Navbar';
 import { getProductById } from '../services/api';
@@ -13,6 +13,12 @@ class ProductDetail extends Component {
 
   componentDidMount() {
     this.fetchGetProductsDetails();
+
+    const store = localStorage.getItem('item');
+    if (!store) {
+      const newStore = [];
+      localStorage.setItem('item', JSON.stringify(newStore));
+    }
   }
 
   fetchGetProductsDetails = async () => {
@@ -22,6 +28,23 @@ class ProductDetail extends Component {
     this.setState({
       product,
     });
+  };
+
+  saveProductToCart = () => {
+    const {
+      product:
+      {
+        id,
+        price,
+        thumbnail,
+        title } } = this.state;
+    const store = JSON.parse(localStorage.getItem('item'));
+    console.log(store);
+    const product = { id, price, thumbnail, title };
+    const arrayOfProducts = store;
+    arrayOfProducts.push(product);
+    localStorage.setItem('item', JSON.stringify(arrayOfProducts));
+    // console.log(arrayOfProducts);
   };
 
   render() {
@@ -42,7 +65,7 @@ class ProductDetail extends Component {
         </div>
         <div
           data-testid="product"
-          className="container-detail "
+          className="container-detail"
         >
           <div className="detail-page-left">
 
@@ -105,8 +128,10 @@ class ProductDetail extends Component {
             </div>
             <div className="product-detail-price">
               <button
-                data-testid="shopping-cart-button"
+                // data-testid="shopping-cart-button"
                 value={ id }
+                data-testid="product-detail-add-to-cart"
+                onClick={ () => this.saveProductToCart() } // USAR LOCALSTORAGE!
               >
                 Adicionar ao carrinho
               </button>
