@@ -1,19 +1,18 @@
-
-
 .back {
   display: flex;
+  flex-direction: row;
   height: 10%;
   margin-right: 200px;
-  flex-direction: row;
+
 
 }
 
 .back img {
+  left: 30px;
   margin: 35px;
   margin-bottom: 0;
   position: absolute;
-  left: 30px;
-  
+
 }
 
 /* .cart {
@@ -26,8 +25,8 @@
 
 
 .product-img {
-  width: 30%;
   height: 30%;
+  width: 30%;
 }
 
 .cart-buy button {
@@ -55,5 +54,6 @@
 
 .container-content {
   display: flex;
-  flex-direction: row;;
+  flex-direction: row;
 }
+
