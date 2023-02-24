@@ -4,7 +4,7 @@ import ProductFound from './ProductFound';
 
 class ProductList extends Component {
   render() {
-    const { productOrCategoryFound } = this.props;
+    const { productOrCategoryFound, submittSave } = this.props;
 
     if (productOrCategoryFound === undefined) {
       return (
@@ -27,7 +27,10 @@ class ProductList extends Component {
             <div
               key={ productOrCategory.id }
             >
-              <ProductFound { ...productOrCategory } />
+              <ProductFound
+                { ...productOrCategory }
+                submittSave={ submittSave }
+              />
             </div>
           ))}
       </div>
@@ -50,6 +53,7 @@ ProductList.propTypes = {
       title: PropTypes.string,
     }),
   ).isRequired,
+  submittSave: PropTypes.func.isRequired,
 };
 
 export default ProductList;

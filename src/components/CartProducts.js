@@ -11,13 +11,13 @@ class CartProducts extends React.Component {
       <div className="container-content">
         <div className="cart-container">
           <div className="cart">
-            <h5>{ productTitle }</h5>
+            <h5 data-testid="shopping-cart-product-name">{ productTitle }</h5>
             <img
               className="product-img"
               src={ productImg }
               alt="imagem do Produto"
             />
-            <p>Quantidade: A FAZER</p>
+            <p data-testid="shopping-cart-product-quantity">1</p>
             <h6>
 
               {`R$ ${productPrice}`}

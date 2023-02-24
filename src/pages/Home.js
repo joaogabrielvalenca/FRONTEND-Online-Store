@@ -19,6 +19,7 @@ class Home extends Component {
       categoryList,
       productList,
       subCategoryList,
+      submittSave,
     } = this.props;
 
     return (
@@ -41,6 +42,7 @@ class Home extends Component {
             <div>
               <ProductList
                 productOrCategoryFound={ productList }
+                submittSave={ submittSave }
               />
             </div>
           </div>
@@ -63,6 +65,7 @@ Home.propTypes = {
   categoryList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   productList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   subCategoryList: PropTypes.func.isRequired,
+  submittSave: PropTypes.func.isRequired,
 };
 
 export default Home;

@@ -16,6 +16,28 @@ class App extends Component {
     categoryId: '',
   };
 
+  componentDidMount() {
+    const store = localStorage.getItem('item');
+    if (!store) {
+      const newStore = [];
+      localStorage.setItem('item', JSON.stringify(newStore));
+    }
+  }
+
+  submittSave = ({ target: { name } }) => {
+    const { productList } = this.state;
+    const productAdd = productList.find(({ id }) => id === name);
+    this.addLocal(productAdd);
+    console.log(productAdd);
+  };
+
+  addLocal = (product) => {
+    const store = JSON.parse(localStorage.getItem('item'));
+    const arrayOfProducts = store;
+    arrayOfProducts.push(product);
+    localStorage.setItem('item', JSON.stringify(arrayOfProducts));
+  };
+
   handleChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value,
@@ -71,6 +93,7 @@ class App extends Component {
             categoryList={ categoryList }
             productList={ productList }
             subCategoryList={ this.subCategoryList }
+            submittSave={ this.submittSave }
             { ...props }
           />) }
         />

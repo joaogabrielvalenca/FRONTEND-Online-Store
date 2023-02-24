@@ -10,6 +10,7 @@ class ProductFound extends Component {
       price,
       thumbnail,
       title,
+      submittSave,
     } = this.props;
 
     return (
@@ -49,16 +50,19 @@ class ProductFound extends Component {
 
             </div>
           </Link>
-          <Link to="/ShoppingCart">
-            <div className="product-price">
-              <button
-                data-testid="shopping-cart-button"
-                name={ id }
-              >
-                Adicionar ao carrinho
-              </button>
-            </div>
-          </Link>
+
+          <div className="product-price">
+            <button
+              name={ id }
+              data-testid="product-add-to-cart"
+              onClick={ submittSave }
+              type="button"
+            >
+              Adicionar ao carrinho
+            </button>
+
+          </div>
+
         </div>
       </div>
     );
@@ -70,6 +74,7 @@ ProductFound.propTypes = {
   price: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  submittSave: PropTypes.func.isRequired,
 };
 
 export default ProductFound;
