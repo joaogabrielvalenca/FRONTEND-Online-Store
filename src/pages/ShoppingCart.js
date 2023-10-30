@@ -6,12 +6,62 @@ import BackIcon from '../images/back_icon.png';
 import CartProducts from '../components/CartProducts';
 
 class ShoppingCart extends Component {
-  render() {
+  // state = {
+  //   totalItems: [],
+  // };
+
+  // componentDidMount() {
+  //   const { totalItems } = this.state;
+  //   const cartProducts = ;
+  //   this.setState({ totalItems: cartProducts });
+  //   console.log(cartProducts);
+  //   this.addQuantity();
+  // }
+
+  cartTotal = () => {
     const cartProducts = JSON.parse(localStorage.getItem('item'));
-    const cartTotal = cartProducts.map((product) => product.price);
-    console.log(cartTotal);
-    const totalPrice = cartTotal.reduce((acc, currVal) => acc + currVal, 0);
-    console.log(totalPrice);
+    const total = cartProducts.map((product) => product.price);
+    const totalPrice = total.reduce((acc, currVal) => acc + currVal, 0);
+    const roundPrice = totalPrice.toFixed(2);
+    return roundPrice;
+  };
+
+  addQuantity = () => {
+    const cartProducts = JSON.parse(localStorage.getItem('item'));
+    const arrOfIds = cartProducts.map((product) => product.id);
+    const sortedIds = arrOfIds.sort();
+    const arrOfQuantities = [];
+    for (let i = 0; i < sortedIds.length; i += 1) {
+      const objOfQuantity = {};
+      if (i === 0) {
+        console.log(arrOfQuantities);
+        objOfQuantity.id = sortedIds[i];
+        objOfQuantity.total = 1;
+        arrOfQuantities.push(objOfQuantity);
+      }
+      if (i > 0 && sortedIds[i] !== sortedIds[i - 1]) {
+        objOfQuantity.id = sortedIds[i];
+        objOfQuantity.total = 1;
+        arrOfQuantities.push(objOfQuantity);
+      }
+      if (i > 0 && sortedIds[i] === sortedIds[i - 1]) {
+        const findId = arrOfQuantities.find((product) => product.id === sortedIds[i]);
+        findId.total += 1;
+      }
+    }
+    arrOfQuantities.forEach((product) => {
+      const findQuantity = cartProducts.find((match) => product.id === match.id);
+      product.price = findQuantity.price;
+      product.thumbnail = findQuantity.thumbnail;
+      product.title = findQuantity.title;
+    });
+    console.log(arrOfQuantities);
+    return arrOfQuantities;
+  };
+
+  render() {
+    const total = this.cartTotal();
+    const quantity = this.addQuantity();
     return (
       <div className="container-home">
         <div className="container-nav">
@@ -34,12 +84,13 @@ class ShoppingCart extends Component {
           <div className="cart-container">
             <h2>Carrinho de Compras</h2>
             <div className="cart">
-              {cartProducts.map((product) => (
-                !cartProducts.includes(product.id) && <CartProducts
+              {quantity.map((product) => (
+                <CartProducts
                   key={ product.id }
                   productTitle={ product.title }
                   productImg={ product.thumbnail }
                   productPrice={ product.price }
+                  productTotal={ product.total }
                 />
               ))}
               {/* <img>close Image</img> */}
@@ -47,7 +98,7 @@ class ShoppingCart extends Component {
           </div>
           <div className="cart-buy">
             <h2>Valor Total da Compra</h2>
-            <h3>{ `R$ ${totalPrice}` }</h3>
+            <h3>{ `R$ ${total}` }</h3>
             <button>Finalizar Compra</button>
           </div>
           <div className="content">
